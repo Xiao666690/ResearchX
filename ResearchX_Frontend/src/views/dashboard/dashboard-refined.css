@@ -1,0 +1,36 @@
+.dashboard-shell { width: 100%; max-width: 1500px; min-width: 0; margin: 0 auto; padding: 36px clamp(22px, 3.8vw, 60px) 70px; }
+.welcome-hero { position: relative; display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(230px, .6fr); min-height: 315px; overflow: hidden; border: 1px solid #e2e8f0; border-radius: 19px; background: #fff; }
+.welcome-hero::before { content: ''; position: absolute; top: -250px; right: 0; width: 680px; height: 680px; border-radius: 50%; background: radial-gradient(circle, #edf3fc 0, transparent 68%); pointer-events: none; animation: haloDrift 15s ease-in-out infinite alternate; }
+.hero-content { position: relative; padding: 44px clamp(28px, 4vw, 58px); animation: fadeRise .6s ease-out both; }
+.hero-eyebrow { color: #6884aa; font-size: 10px; font-weight: 750; letter-spacing: .14em; }
+.hero-content h1 { margin: 21px 0 14px; color: #1f2c40; font-size: clamp(30px, 3.3vw, 46px); font-weight: 630; line-height: 1.26; letter-spacing: -.05em; }
+.hero-content h1 em { color: #3465a8; font-style: normal; }
+.hero-content p { max-width: 500px; margin: 0; color: #8190a3; font-size: 13px; line-height: 1.8; }
+.hero-cta { display: inline-flex; align-items: center; gap: 12px; margin-top: 26px; padding: 11px 15px; border-radius: 8px; color: #fff; background: #315fa7; font-size: 12px; font-weight: 700; text-decoration: none; transition: background .2s, transform .2s, gap .2s; }
+.hero-cta:hover { gap: 18px; background: #244f90; transform: translateY(-2px); }
+.hero-aside { position: relative; display: flex; flex-direction: column; justify-content: center; padding: 35px 45px 35px 35px; border-left: 1px solid #e8edf3; }
+.aside-index { margin-bottom: 14px; color: #9aacc1; font-size: 9px; font-weight: 750; letter-spacing: .12em; }
+.hero-aside div { display: flex; align-items: baseline; gap: 18px; padding: 14px 0; border-bottom: 1px solid #e8edf3; }
+.hero-aside div:last-child { border-bottom: 0; }
+.hero-aside div span { color: #9eb4cc; font-size: 10px; }
+.hero-aside div strong { color: #40536a; font-size: 13px; font-weight: 600; }
+.section-heading { margin: 40px 0 18px; }
+.section-heading span { color: #758eae; font-size: 10px; font-weight: 700; letter-spacing: .14em; }
+.section-heading h2 { margin: 6px 0 0; color: #26384e; font-size: 21px; font-weight: 650; }
+.quick-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-bottom: 35px; }
+.quick-card { display: flex; align-items: flex-start; gap: 16px; min-height: 125px; padding: 22px 20px; border: 1px solid #e3e9f0; border-radius: 13px; color: #273c56; background: #fff; text-decoration: none; transition: border-color .22s, box-shadow .22s, transform .22s; animation: fadeRise .6s ease-out both; }
+.quick-card:nth-child(2) { animation-delay: .06s; }
+.quick-card:nth-child(3) { animation-delay: .12s; }
+.quick-card:hover { border-color: #b8cbe3; box-shadow: 0 12px 27px rgba(39, 77, 127, .07); transform: translateY(-3px); }
+.quick-icon { display: grid; place-items: center; flex: none; width: 37px; height: 37px; border-radius: 9px; color: #386bab; background: #edf3fb; }
+.quick-card.library .quick-icon { color: #4b7f86; background: #eef5f4; }
+.quick-card.ask .quick-icon { color: #706a9d; background: #f2f1f8; }
+.quick-card strong { display: block; font-size: 14px; font-weight: 700; }
+.quick-card p { margin: 8px 0 0; color: #8b98a8; font-size: 11px; line-height: 1.6; }
+.quick-arrow { flex: none; margin-left: auto; color: #a0b0c1; transition: color .2s, transform .2s; }
+.quick-card:hover .quick-arrow { color: #386bab; transform: translate(2px, -2px); }
+@keyframes fadeRise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes haloDrift { from { transform: translate(0, 0); } to { transform: translate(-28px, 24px); } }
+@media (max-width: 1020px) { .quick-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }.hero-aside { padding-right: 20px; padding-left: 24px; } }
+@media (max-width: 740px) { .dashboard-shell { padding: 22px 16px 70px; }.welcome-hero { grid-template-columns: 1fr; }.hero-content { padding: 34px 26px; }.hero-content h1 { font-size: 34px; }.hero-aside { display: none; }.quick-grid { grid-template-columns: 1fr; }.quick-card { min-height: 105px; }.section-heading { margin-top: 31px; } }
+@media (prefers-reduced-motion: reduce) { .welcome-hero::before, .hero-content, .quick-card { animation: none; }.hero-cta, .quick-card, .quick-arrow { transition: none; } }

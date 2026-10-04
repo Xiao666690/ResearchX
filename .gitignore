@@ -1,4 +1,4 @@
-# PaperAgent source-only repository
+# ResearchX source-only repository
 **/.env
 **/.env.*
 !**/.env.example
@@ -9,6 +9,7 @@
 **/node_modules/
 **/dist/
 **/.npm_cache/
+**/.npm-cache/
 **/.pip_cache/
 **/*.pyc
 **/*.log
@@ -28,8 +29,8 @@
 **/*.zip
 **/*.7z
 **/*.rar
-PaperQuery_Backend/models/
-PaperQuery_Backend/res/
-PaperQuery_Backend/competition_eval/
-PaperQuery_Backend/eval/
-PaperQuery_Frontend/tsconfig.web.tsbuildinfo
+ResearchX_Backend/models/
+ResearchX_Backend/res/
+ResearchX_Backend/competition_eval/
+ResearchX_Backend/eval/
+ResearchX_Frontend/tsconfig.web.tsbuildinfo

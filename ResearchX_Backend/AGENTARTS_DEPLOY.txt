@@ -1,0 +1,40 @@
+ResearchX AgentArts Runtime deployment
+======================================
+
+The Runtime image contains the public-paper Research Agent only. The existing
+local Web, Library, PDF upload and ChromaDB remain on the FastAPI host. To use
+local Library papers from the cloud later, configure a shared data service.
+
+1. Test locally from ResearchX_Backend:
+
+   .\.venv\Scripts\python.exe -m unittest discover -s tests -v
+   .\.venv\Scripts\python.exe scripts\smoke_integrations.py
+   .\.venv\Scripts\python.exe -m uvicorn integrations.agentarts.runtime_app:app --host 127.0.0.1 --port 8090
+
+   GET http://127.0.0.1:8090/ping should return {"status":"Healthy"}.
+   POST http://127.0.0.1:8090/invocations with JSON
+   {"goal":"Summarize one RAG paper with citations","model":"deepseek"}.
+
+2. Build an ARM64 image from ResearchX_Backend. Replace the image URI and use
+   a versioned tag. Docker Desktop must have a running Linux engine:
+
+   docker buildx build --platform linux/arm64 -f Dockerfile.agentarts -t <SWR_IMAGE_URI>:v1 --push .
+
+   Configure SWR authentication using the instructions in your Huawei Cloud
+   console before this command. The .dockerignore excludes .env and local data.
+
+3. In AgentArts > Hosted & Run > Agent Runtime, choose the SWR image, HTTP
+   inbound protocol, port 8080 and API Key inbound authentication. Add model
+   credentials as Runtime environment variables (DEEPSEEK_API_KEY,
+   DEEPSEEK_API_BASE, DEEPSEEK_MODEL; KIMI_* and ZHIPU_* if needed).
+   Never put credentials into the image. Enable Runtime logs/observability.
+
+4. Copy the deployed Runtime's full HTTPS /invocations URL and its inbound
+   API Key into the LOCAL backend .env as AGENTARTS_INVOCATION_URL and
+   AGENTARTS_API_KEY. Set RESEARCH_RUNTIME=agentarts, then restart FastAPI.
+   New Web Research tasks without selected local documents will run on
+   AgentArts. Set RESEARCH_RUNTIME=local to run them on this computer.
+
+Reference: https://support.huaweicloud.com/highcode-agentarts/agentarts_10_070.html
+Reference: https://support.huaweicloud.com/highcode-agentarts/agentarts_10_031.html
+Reference: https://support.huaweicloud.com/bestpractice-agentarts/agentarts_06_0042.html

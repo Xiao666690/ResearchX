@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+
+    --primary: 214 53% 40%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --ring: 214 50% 68%;
+
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --ring: 240 4.9% 83.9%;
+  }
+}
+
+/* Element Plus confirmations and notices use the same calm surface as ResearchX dialogs. */
+:root {
+  --el-color-primary: #315f9d;
+  --el-border-radius-base: 10px;
+}
+
+.el-overlay { background-color: rgba(22, 41, 67, .4); backdrop-filter: blur(3px); }
+.el-message-box {
+  width: min(560px, calc(100vw - 32px));
+  max-width: none;
+  border: 1px solid #e0e7ef;
+  border-radius: 18px;
+  padding: 26px 30px 28px;
+  box-shadow: 0 28px 72px rgba(22, 43, 73, .18), 0 4px 14px rgba(22, 43, 73, .06);
+}
+.el-message-box__header { padding: 0 40px 0 0; }
+.el-message-box__title { color: #22374f; font-size: 21px; font-weight: 650; letter-spacing: -.025em; }
+.el-message-box__headerbtn { top: 22px; right: 22px; width: 34px; height: 34px; border-radius: 9px; }
+.el-message-box__headerbtn:hover { background: #eef3f8; }
+.el-message-box__content { padding: 22px 0 26px; color: #5f7185; font-size: 14px; line-height: 1.75; }
+.el-message-box__btns { display: flex; justify-content: flex-end; gap: 10px; border-top: 1px solid #e8edf3; padding: 20px 0 0; }
+.el-message-box__btns .el-button { min-width: 92px; min-height: 44px; margin: 0; border-radius: 10px; font-size: 13px; font-weight: 600; transition: background-color .2s, border-color .2s, box-shadow .2s, transform .2s; }
+.el-message-box__btns .el-button:hover { transform: translateY(-1px); }
+.el-message-box__btns .el-button--primary { background: #315f9d; border-color: #315f9d; box-shadow: 0 3px 10px rgba(36, 78, 132, .14); }
+.el-message-box__btns .el-button--primary:hover { background: #274e83; border-color: #274e83; }
+.el-notification { width: min(390px, calc(100vw - 28px)); border: 1px solid #e0e7ef; border-radius: 14px; padding: 16px 18px; box-shadow: 0 15px 38px rgba(22, 43, 73, .12); }
+.el-notification__title { color: #263b52; font-size: 14px; font-weight: 650; }
+.el-notification__content { color: #667a8e; font-size: 13px; line-height: 1.6; }
+@media (max-width: 600px) {
+  .el-message-box { padding: 23px 22px; }
+  .el-message-box__btns .el-button { flex: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .el-message-box__btns .el-button { transition: none; }
+  .el-message-box__btns .el-button:hover { transform: none; }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
